@@ -64,7 +64,7 @@ public class UserControllerUnitTest
         admins.add(new UserRoles(new User(), r1));
         admins.add(new UserRoles(new User(), r2));
         admins.add(new UserRoles(new User(), r3));
-        User u1 = new User("admin", "ILuvM4th!", "admin@lambdaschool.local", admins);
+        User u1 = new User("admin", "ILuvM4th!", "miami", "admin@lambdaschool.local", admins);
 
         u1.getUseremails()
           .add(new Useremail(u1, "admin@email.local"));
@@ -81,7 +81,7 @@ public class UserControllerUnitTest
         ArrayList<UserRoles> datas = new ArrayList<>();
         datas.add(new UserRoles(new User(), r3));
         datas.add(new UserRoles(new User(), r2));
-        User u2 = new User("cinnamon", "1234567", "cinnamon@lambdaschool.local", datas);
+        User u2 = new User("cinnamon", "1234567", "New York City", "cinnamon@lambdaschool.local", datas);
 
         u2.getUseremails()
           .add(new Useremail(u2, "cinnamon@mymail.local"));
@@ -101,7 +101,7 @@ public class UserControllerUnitTest
         // user
         ArrayList<UserRoles> users = new ArrayList<>();
         users.add(new UserRoles(new User(), r1));
-        User u3 = new User("testingbarn", "ILuvM4th!", "testingbarn@school.lambda", users);
+        User u3 = new User("testingbarn", "ILuvM4th!", "Sacramento", "testingbarn@school.lambda", users);
 
         u3.getUseremails()
           .add(new Useremail(u3, "barnbarn@email.local"));
@@ -112,13 +112,13 @@ public class UserControllerUnitTest
 
         users = new ArrayList<>();
         users.add(new UserRoles(new User(), r2));
-        User u4 = new User("testingcat", "password", "testingcat@school.lambda", users);
+        User u4 = new User("testingcat", "password", "ft lauderdale", "testingcat@school.lambda", users);
         u4.setUserid(104);
         userList.add(u4);
 
         users = new ArrayList<>();
         users.add(new UserRoles(new User(), r2));
-        User u5 = new User("testingdog", "password", "testingdog@school.lambda", users);
+        User u5 = new User("testingdog", "password", "Houston",  "testingdog@school.lambda", users);
         u5.setUserid(105);
         userList.add(u5);
 

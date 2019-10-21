@@ -49,6 +49,7 @@ public class SeedData implements CommandLineRunner
                                  r3));
         User u1 = new User("admin",
                            "password",
+                           "?",
                            "admin@lambdaschool.local",
                            admins);
         u1.getUseremails()
@@ -68,6 +69,7 @@ public class SeedData implements CommandLineRunner
                                 r2));
         User u2 = new User("cinnamon",
                            "1234567",
+                           "?",
                            "cinnamon@lambdaschool.local",
                            datas);
         u2.getUseremails()
@@ -87,6 +89,7 @@ public class SeedData implements CommandLineRunner
                                 r2));
         User u3 = new User("barnbarn",
                            "ILuvM4th!",
+                           "?",
                            "barnbarn@lambdaschool.local",
                            users);
         u3.getUseremails()
@@ -99,6 +102,7 @@ public class SeedData implements CommandLineRunner
                                 r2));
         User u4 = new User("puttat",
                            "password",
+                           "?",
                            "puttat@school.lambda",
                            users);
         userService.save(u4);
@@ -108,6 +112,7 @@ public class SeedData implements CommandLineRunner
                                 r2));
         User u5 = new User("misskitty",
                            "password",
+                           "?",
                            "misskitty@school.lambda",
                            users);
         userService.save(u5);
@@ -131,6 +136,7 @@ public class SeedData implements CommandLineRunner
             fakeUser = new User(nameFaker.name()
                                          .username(),
                                 "password",
+                                "?",
                                 nameFaker.internet()
                                          .emailAddress(),
                                 users);

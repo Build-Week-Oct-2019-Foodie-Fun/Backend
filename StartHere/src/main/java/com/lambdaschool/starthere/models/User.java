@@ -31,6 +31,9 @@ public class User extends Auditable
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    @Column(nullable = true)
+    private String location;
+
     @Column(nullable = false,
             unique = true)
     @Email
@@ -53,6 +56,7 @@ public class User extends Auditable
 
     public User(String username,
                 String password,
+                String location,
                 String primaryemail,
                 List<UserRoles> userRoles)
     {
@@ -90,6 +94,14 @@ public class User extends Auditable
     public void setUsername(String username)
     {
         this.username = username.toLowerCase();
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getPrimaryemail()
@@ -161,8 +173,14 @@ public class User extends Auditable
     }
 
     @Override
-    public String toString()
-    {
-        return "User{" + "userid=" + userid + ", username='" + username + '\'' + ", password='" + password + '\'' + ", primaryEmail='" + primaryemail + '\'' + ", userroles=" + userroles + ", useremails=" + useremails + '}';
+    public String toString() {
+        return "User{" +
+                "userid=" + userid +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", primaryemail='" + primaryemail + '\'' +
+                ", userroles=" + userroles +
+                ", useremails=" + useremails +
+                '}';
     }
 }
