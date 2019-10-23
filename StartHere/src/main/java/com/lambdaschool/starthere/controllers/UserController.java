@@ -1,6 +1,7 @@
 package com.lambdaschool.starthere.controllers;
 
 import com.lambdaschool.starthere.logging.Loggable;
+import com.lambdaschool.starthere.models.Restaurant;
 import com.lambdaschool.starthere.models.User;
 import com.lambdaschool.starthere.services.UserService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -303,6 +304,13 @@ public class UserController
         userService.addUserRole(userid,
                                 roleid);
 
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/restaurant/{userid}", consumes = {"application/json"}, produces = {"application/json"})
+    public ResponseEntity<?> addRestaurant(@Valid @RequestBody
+                                                   Restaurant restaurant, @PathVariable long userid) {
+        userService.addRestaurant(restaurant, userid);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

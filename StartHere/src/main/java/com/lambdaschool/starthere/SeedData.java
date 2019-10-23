@@ -140,7 +140,7 @@ public class SeedData implements CommandLineRunner
             fakeUser.getUseremails()
                     .add(new Useremail(fakeUser,
                                        fakeValuesService.bothify("????##@gmail.com")));
-            userService.save(fakeUser);
+            User newuser = userService.save(fakeUser);
         }
     }
 }

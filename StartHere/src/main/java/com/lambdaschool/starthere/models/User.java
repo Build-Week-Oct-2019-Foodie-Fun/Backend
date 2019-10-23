@@ -50,6 +50,16 @@ public class User extends Auditable
     @JsonIgnoreProperties("user")
     private List<Useremail> useremails = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("user")
+    private List<Restaurant> userrestaurants = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user",
+                cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("user")
+    private List<UserReview> userreviews = new ArrayList<>();
+
     public User()
     {
     }
@@ -144,6 +154,22 @@ public class User extends Auditable
     public void setUserroles(List<UserRoles> userroles)
     {
         this.userroles = userroles;
+    }
+
+    public List<Restaurant> getUserrestaurants() {
+        return userrestaurants;
+    }
+
+    public void setUserrestaurants(List<Restaurant> userrestaurants) {
+        this.userrestaurants = userrestaurants;
+    }
+
+    public List<UserReview> getUserreviews() {
+        return userreviews;
+    }
+
+    public void setUserreviews(List<UserReview> userreviews) {
+        this.userreviews = userreviews;
     }
 
     public List<Useremail> getUseremails()

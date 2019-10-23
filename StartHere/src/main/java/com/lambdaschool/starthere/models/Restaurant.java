@@ -1,6 +1,11 @@
 package com.lambdaschool.starthere.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "restaurants")
@@ -19,18 +24,33 @@ public class Restaurant extends Auditable {
 
     private String restaurantRating;
 
+    @ApiModelProperty(hidden = true)
+    @ManyToOne
+    @JoinColumn(name = "userid",
+                nullable = false)
+    @JsonIgnoreProperties({"restaurants", "userroles", "reviews"})
+    private User user;
+
+    @OneToMany(mappedBy = "restaurant",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties("restaurants")
+    private List<UserReview> userreviews = new ArrayList<>();
+
+
     public Restaurant() {
     }
 
-    public Restaurant(String restaurantName,
+    public Restaurant(User user,
+                    String restaurantName,
                       String restaurantLocation,
                       String restaurantType,
                       String restaurantHours,
                       String restaurantRating) {
 
 
+        this.user = user;
         this.restaurantName = restaurantName;
-
         this.restaurantLocation = restaurantLocation;
         this.restaurantType = restaurantType;
         this.restaurantHours = restaurantHours;
@@ -75,6 +95,14 @@ public class Restaurant extends Auditable {
 
     public void setRestaurantHours(String restaurantHours) {
         this.restaurantHours = restaurantHours;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getRestaurantRating() {

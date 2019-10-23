@@ -3,10 +3,8 @@ package com.lambdaschool.starthere.services;
 import com.lambdaschool.starthere.exceptions.ResourceFoundException;
 import com.lambdaschool.starthere.exceptions.ResourceNotFoundException;
 import com.lambdaschool.starthere.logging.Loggable;
-import com.lambdaschool.starthere.models.Role;
-import com.lambdaschool.starthere.models.User;
-import com.lambdaschool.starthere.models.UserRoles;
-import com.lambdaschool.starthere.models.Useremail;
+import com.lambdaschool.starthere.models.*;
+import com.lambdaschool.starthere.repository.RestaurantRepository;
 import com.lambdaschool.starthere.repository.RoleRepository;
 import com.lambdaschool.starthere.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,8 @@ import java.util.List;
 public class UserServiceImpl implements UserDetailsService,
         UserService
 {
+    @Autowired
+    private RestaurantRepository restrepos;
 
     @Autowired
     private UserRepository userrepos;
@@ -91,6 +91,24 @@ public class UserServiceImpl implements UserDetailsService,
         }
         return uu;
     }
+
+    @Override
+    public Restaurant addRestaurant(Restaurant restaurant, Long userid) {
+
+            User currentuser = findUserById(userid);
+
+            Restaurant newRestaurant = new Restaurant();
+
+            newRestaurant.setRestaurantName(restaurant.getRestaurantName());
+            newRestaurant.setRestaurantLocation(restaurant.getRestaurantLocation());
+            newRestaurant.setRestaurantHours(restaurant.getRestaurantHours());
+            newRestaurant.setRestaurantType(restaurant.getRestaurantType());
+            newRestaurant.setRestaurantRating(restaurant.getRestaurantRating());
+
+            newRestaurant.setUser(currentuser);
+
+            return restrepos.save(newRestaurant);
+        }
 
     @Transactional
     @Override

@@ -1,5 +1,6 @@
 package com.lambdaschool.starthere.services;
 
+import com.lambdaschool.starthere.models.Restaurant;
 import com.lambdaschool.starthere.models.User;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +23,9 @@ public interface UserService
     void delete(long id);
 
     User save(User user);
+
+    Restaurant addRestaurant(Restaurant restaurant, Long userid);
+
 
     User update(User user,
                 long id,
