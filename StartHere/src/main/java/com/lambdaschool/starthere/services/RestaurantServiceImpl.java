@@ -2,6 +2,7 @@ package com.lambdaschool.starthere.services;
 
 import com.lambdaschool.starthere.models.Restaurant;
 import com.lambdaschool.starthere.models.User;
+import com.lambdaschool.starthere.models.UserReview;
 import com.lambdaschool.starthere.repository.RestaurantRepository;
 import com.lambdaschool.starthere.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,6 @@ public class RestaurantServiceImpl implements RestaurantService {
         //return restrepos.save(newRestaurant);
         return null;
     }
-
 
 
     @Override

@@ -2,6 +2,7 @@ package com.lambdaschool.starthere.services;
 
 import com.lambdaschool.starthere.models.Restaurant;
 import com.lambdaschool.starthere.models.User;
+import com.lambdaschool.starthere.models.UserReview;
 
 import java.util.List;
 

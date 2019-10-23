@@ -110,6 +110,26 @@ public class UserServiceImpl implements UserDetailsService,
             return restrepos.save(newRestaurant);
         }
 
+    @Override
+    public void addReview(Long userid, Long restaurantid)
+    {
+            userrepos.findById(userid)
+                    .orElseThrow(() -> new ResourceNotFoundException("User id " + userid + " not found!"));
+            restrepos.findById(restaurantid)
+                    .orElseThrow(() -> new ResourceNotFoundException("Role id " + restaurantid + " not found!"));
+
+            if (restrepos.checkUserReviewCombo(userid,
+                    restaurantid)
+                    .getCount() <= 0)
+            {
+                restrepos.insertUserReviews(userid,
+                        restaurantid);
+            } else
+            {
+                throw new ResourceFoundException("Role and User Combination Already Exists");
+            }
+        }
+
     @Transactional
     @Override
     public User save(User user)

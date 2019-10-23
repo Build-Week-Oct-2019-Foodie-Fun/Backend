@@ -313,4 +313,20 @@ public class UserController
         userService.addRestaurant(restaurant, userid);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @PostMapping(value = "/restaurant/{restaurantid}/user/{userid}", consumes = {"application/json"}, produces = {"application/json"})
+    public ResponseEntity<?> addReview(HttpServletRequest request,
+                                               @PathVariable
+                                                       long restaurantid,
+                                               @PathVariable
+                                                       long userid)
+    {
+        logger.trace(request.getMethod()
+                .toUpperCase() + " " + request.getRequestURI() + " accessed");
+
+        userService.addUserRole(userid,
+                restaurantid);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

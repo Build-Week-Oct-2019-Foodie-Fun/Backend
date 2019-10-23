@@ -32,6 +32,8 @@ public class RestaurantController {
         return new ResponseEntity<>(restaurantList, HttpStatus.OK);
     }
 
+    //POST http://localhost:2019/restaurants/newreview
+
 //    // POST http://localhost:2019/restaurants/newrestaurant
 //    @PostMapping(value = "/newrestaurant",
 //                consumes = {"application/json"},
